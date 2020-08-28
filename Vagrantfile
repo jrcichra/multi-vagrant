@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
       #config.vm.provision :shell, :inline => "DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -yq tmux", :privileged => true
       config.vm.provider :libvirt do |libvirt|
         libvirt.storage :file, :size => '20G'
+        libvirt.cpu_mode = 'host-passthrough'
       end
     end
   end
