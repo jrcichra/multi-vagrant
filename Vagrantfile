@@ -9,6 +9,9 @@ Vagrant.configure("2") do |config|
       ip = "172.21.12.#{i+10}"
       config.vm.network :private_network, ip: ip
       #config.vm.provision :shell, :inline => "DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -yq tmux", :privileged => true
+      config.vm.provider :libvirt do |libvirt|
+        libvirt.storage :file, :size => '20G'
+      end
     end
   end
   config.vm.define vm_name = "client" do |config|
